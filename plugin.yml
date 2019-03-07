@@ -1,6 +1,6 @@
 name: SpawnCommand
 version: 1.1
-api: [3.0.0-ALPHA11, 3.0.0-ALPHA12]
+api: [3.0.0]
 author: WortTuner
 main: SpawnCommand\Main
 
@@ -9,9 +9,15 @@ commands:
     description: "Teleport to spawn"
     usage: "/spawn"
     permission: "spawncommand.command.spawn"
+  setspawn:
+    description: "Set server spawn"
+    usage: "/setspawn"
 
 permissions:
   spawn:
     default: true
     description: "Allows player to go to spawn point"
+  setspawn:
+    default: op
+    description: "Allows player to set the server spawn."
 
