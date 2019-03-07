@@ -4,6 +4,7 @@ use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
+use pocketmine\utils\TextFormat;
 use pocketmine\utils\Config;
 use pocketmine\Player;
 
@@ -22,10 +23,15 @@ class Main extends PluginBase implements Listener{
         switch($command->getName()){
             case "spawn":
                 if($sender instanceof Player){
-                    $pos = $sender->getLevel()->getSpawnLocation();
-                    $message = $this->getConfig()->get("SpawnMessage");
-                    $sender->teleport($pos);
-                    $sender->sendMessage($message);
+                   $sender->teleport($this->getServer()->getDefaultLevel()->getSpawnLocation(), $this->getServer()->getDefaultLevel());
+                    $sender->sendMessage(TextFormat::colorize("&aTeleported you to spawn."));
+                    return true;
+                    break;
+                }
+                    case "setspawn":
+                    if($sender instanceof Player){
+                     $sender->getLevel()->setSpawnLocation($sender);
+        $sender->getServer()->setDefaultLevel($sender->getLevel());
                 }else{
                     $sender->sendMessage("§cPlease run this command in-game.");
                 }
