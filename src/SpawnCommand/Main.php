@@ -32,6 +32,7 @@ class Main extends PluginBase implements Listener{
                     if($sender instanceof Player){
                      $sender->getLevel()->setSpawnLocation($sender);
         $sender->getServer()->setDefaultLevel($sender->getLevel());
+                        $sender->sendMessage(TextFormat::colorize("&dServer spawn set successfully! &aUse &b/spawn &6to go to spawn!"));
                 }else{
                     $sender->sendMessage("§cPlease run this command in-game.");
                 }
